@@ -19,7 +19,7 @@ with tab1:
     if st.button('Reload Data'):
         st.cache_data.clear()
         st.rerun()
-    st.session_state.df = pd.read_excel('C:\\Users\\Racadio\\Documents\\Python_dashboard_1\\racadio_sheet.xlsx')
+    st.session_state.df = pd.read_excel('racadio_sheet.xlsx')
     #Format the date input.
     st.session_state.df['Date'] = pd.to_datetime(st.session_state.df['Date'], errors='coerce').dt.strftime('%m-%d-%Y')
     selection = st.multiselect('Select the Expense Type:', ['Babysitting', 'Bills', 'Food', 'Fuel', 'House', 'prosper', 'tinker', 'Will Oil Change'], default=[])
@@ -50,13 +50,13 @@ with tab2:
         try:
             new_row = pd.DataFrame({'Type': [type], 'Date': [date], 'Amounts': [amount], 'Description': [description]})
             st.session_state.df = pd.concat([st.session_state.df, new_row], ignore_index=True)
-            st.session_state.df.to_excel('C:\\Users\\Racadio\\Documents\\Python_dashboard_1\\racadio_sheet.xlsx', index=False)
+            st.session_state.df.to_excel('racadio_sheet.xlsx', index=False)
         except Exception as e:
             st.error(f"An error occurred while adding the entry: {e}")
 
     #Display the updated DataFrame after adding the new entry.
     if st.checkbox('Show current sheet'):
-        st.dataframe(pd.read_excel('C:\\Users\\Racadio\\Documents\\Python_dashboard_1\\racadio_sheet.xlsx'))
+        st.dataframe(pd.read_excel('racadio_sheet.xlsx'))
 
 
 
