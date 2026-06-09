@@ -13,6 +13,7 @@ tab1, tab2 = st.tabs(['Main Spreadsheet', 'Manual Entries'])
 today = datetime.date.today()
 
 
+
 #Congifure the first tab which will display the main spreadsheet and allow for reloading the data.
 with tab1:
     st.header('Query Expenses')
@@ -26,14 +27,17 @@ with tab1:
     search_term = st.text_input('Search Date (mm-dd-yyyy) or Description:')
     if selection:
         filtered_df = st.session_state.df[st.session_state.df['Type'].isin(selection)]
+    st.dataframe(filered_df)
     elif search_term:
         if search_term in st.session_state.df['Date'].values:
             filtered_df = st.session_state.df[st.session_state.df['Date'] == search_term]
+        st.dataframe(filered_df)
         elif search_term in st.session_state.df['Description'].values:
             filtered_df = st.session_state.df[st.session_state.df['Description'].str.contains(search_term, case=False, na=False)]
+        st.dataframe(filered_df)
     else:
-        filtered_df = st.session_state.df    
-    st.dataframe(filtered_df)
+        st.dataframe(st.session_state.df)
+
 
 #Configure the second tab which will allow for manual entry of new expenses and saving them to the Excel file. It will also display the updated DataFrame after adding a new entry.
 with tab2:
