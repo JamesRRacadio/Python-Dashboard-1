@@ -31,7 +31,7 @@ with tab1:
     elif search_term:
         if search_term in st.session_state.df['Date'].values:
             filtered_df = st.session_state.df[st.session_state.df['Date'] == search_term]
-        st.dataframe(filered_df)
+            st.dataframe(filered_df)
         elif search_term in st.session_state.df['Description'].values:
             filtered_df = st.session_state.df[st.session_state.df['Description'].str.contains(search_term, case=False, na=False)]
             st.dataframe(filered_df)
