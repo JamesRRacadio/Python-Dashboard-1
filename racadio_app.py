@@ -27,14 +27,14 @@ with tab1:
     search_term = st.text_input('Search Date (mm-dd-yyyy) or Description:')
     if selection:
         filtered_df = st.session_state.df[st.session_state.df['Type'].isin(selection)]
-        st.dataframe(filered_df)
+        st.dataframe(filtered_df)
     elif search_term:
         if search_term in st.session_state.df['Date'].values:
             filtered_df = st.session_state.df[st.session_state.df['Date'] == search_term]
-            st.dataframe(filered_df)
+            st.dataframe(filtered_df)
         elif search_term in st.session_state.df['Description'].values:
             filtered_df = st.session_state.df[st.session_state.df['Description'].str.contains(search_term, case=False, na=False)]
-            st.dataframe(filered_df)
+            st.dataframe(filtered_df)
     else:
         st.dataframe(st.session_state.df)
 
