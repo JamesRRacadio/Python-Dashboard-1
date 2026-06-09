@@ -16,7 +16,7 @@ today = datetime.date.today()
 
 #Congifure the first tab which will display the main spreadsheet and allow for reloading the data.
 with tab1:
-    st.header('Query Expenses')
+    st.header('Expenses')
     if st.button('Reload Data'):
         st.cache_data.clear()
         st.rerun()
