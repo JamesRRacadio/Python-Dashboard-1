@@ -26,8 +26,8 @@ with tab1:
     selection = st.multiselect('Select the Expense Type:', ['Babysitting', 'Bills', 'Food', 'Fuel', 'House', 'prosper', 'tinker', 'Will Oil Change'], default=[])
     search_term = st.text_input('Search Date (mm-dd-yyyy) or Description:')
     if selection:
-        filtered_df = st.session_state.df[st.session_state.df['Type'].isin(selection)]
-    st.dataframe(filered_df)
+        filtered_df = st.session_state.df[st.session_state.df['Type'].isin(selection)
+        st.dataframe(filered_df)
     elif search_term:
         if search_term in st.session_state.df['Date'].values:
             filtered_df = st.session_state.df[st.session_state.df['Date'] == search_term]
